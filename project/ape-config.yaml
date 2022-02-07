@@ -1,0 +1,22 @@
+plugins:
+  - name: solidity
+  - name: hardhat
+  - name: alchemy
+
+ethereum:
+  default_network: mainnet-fork
+  mainnet-fork:
+    default_provider: hardhat
+
+dependencies:
+  - name: OpenZeppelin
+    github: OpenZeppelin/openzeppelin-contracts
+    version: 4.4.2
+
+solidity:
+  import_remapping:
+    - "@openzeppelin=OpenZeppelin/4.4.2"
+
+hardhat:
+  mainnet_fork:
+    upstream_provider: alchemy
