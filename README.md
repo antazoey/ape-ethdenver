@@ -9,6 +9,25 @@ There are two examples here:
 ## Demo Project
 
 The demo project is found in the `project/` directory.
+Install the plugins by doing:
+
+```bash
+ape plugins install
+```
+
+List your existing plugins by doing:
+
+```bash
+ape plugins list
+```
+
+After the `solidity` plugin is installed, compile the project:
+
+```bash
+ape compile
+```
+
+Try running the tests:
 
 ## Demo Plugin
 

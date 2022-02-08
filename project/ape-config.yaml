@@ -1,7 +1,7 @@
 plugins:
-  - name: solidity
-  - name: hardhat
-  - name: alchemy
+  - name: solidity  # For compiling contracts
+  - name: hardhat   # For running tests
+  - name: alchemy   # For using mainnet-fork in tests and deploying
 
 ethereum:
   default_network: mainnet-fork

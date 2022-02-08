@@ -1,3 +1,4 @@
+import ape
 import pytest
 
 
@@ -28,3 +29,8 @@ def test_mint(owner, receiver, token):
     token.mint(receiver, 10, sender=owner)
     balance = token.balanceOf(receiver)
     assert balance == 10
+
+
+def test_mint_not_owner(receiver, token):
+    with ape.reverts("!authorized"):
+        token.mint(receiver, 10, sender=receiver)
