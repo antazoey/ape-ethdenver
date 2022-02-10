@@ -1,36 +1,17 @@
 import ape
-import pytest
 
 
-@pytest.fixture
-def owner(accounts):
-    return accounts[0]
-
-
-@pytest.fixture
-def receiver(accounts):
-    return accounts[1]
-
-
-@pytest.fixture
-def token(owner, project):
-    return owner.deploy(project.BananaJamToken)
-
-
-def test_name(token):
-    assert token.name() == "BananaJam"
-
-
-def test_decimals(token):
-    assert token.decimals() == 18
-
-
-def test_mint(owner, receiver, token):
-    token.mint(receiver, 10, sender=owner)
-    balance = token.balanceOf(receiver)
+def test_upstream_holders_may_have_downstream_tokens(owner, weth_holder, token):
+    token.mint(weth_holder, 10, sender=owner)
+    balance = token.balanceOf(weth_holder)
     assert balance == 10
 
 
-def test_mint_not_owner(receiver, token):
+def test_non_upstream_holders_may_not_have_downstream_tokens(owner, some_rando, token):
+    with ape.reverts():
+        token.mint(some_rando, 10, sender=owner)
+
+
+def test_only_owner_can_mint(some_rando, token):
     with ape.reverts("!authorized"):
-        token.mint(receiver, 10, sender=receiver)
+        token.mint(some_rando, 10, sender=some_rando)
