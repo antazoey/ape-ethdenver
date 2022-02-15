@@ -25,7 +25,7 @@ class Chainstack(Web3Provider):
         Each Chainstack node runs a single networks.
         """
 
-        env_var_key = f"CHAINSTACK_{self.network.name}_URL"
+        env_var_key = f"CHAINSTACK_{self.network.name.upper()}_URL"
         env_var = os.getenv(env_var_key)
         if not env_var:
             raise ChainstackProviderError(f"Missing environment variable '{env_var_key}'")

@@ -17,15 +17,10 @@ def some_rando(accounts):
 
 @pytest.fixture
 def weth_holder():
-    # TODO: Replace with impersonated account.
     return ape.accounts.load("weth_account")
 
 
 @pytest.fixture
-def weth():
-    return tokens["WETH"]
-
-
-@pytest.fixture
-def token(owner, project, weth):
-    return owner.deploy(project.DownstreamERC20, weth.address)
+def token(owner, project):
+    weth_address = tokens["WETH"].address  # Upstream token
+    return owner.deploy(project.DownstreamERC20, weth_address)
