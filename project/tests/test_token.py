@@ -10,8 +10,3 @@ def test_upstream_holders_may_have_downstream_tokens(owner, weth_holder, token):
 def test_non_upstream_holders_may_not_have_downstream_tokens(owner, some_rando, token):
     with ape.reverts():
         token.mint(some_rando, 10, sender=owner)
-
-
-def test_only_owner_can_mint(some_rando, token):
-    with ape.reverts("!authorized"):
-        token.mint(some_rando, 10, sender=some_rando)
