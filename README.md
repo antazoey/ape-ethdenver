@@ -6,13 +6,34 @@ There are two examples here:
 1. A demo project
 2. A demo plugin
 
+## Setup python env
+
+Install poetry
+```bash
+pip3 install poetry
+```
+
+Install project
+```bash
+poetry install
+```
+
+Activate venv shell
+```bash
+poetry shell
+```
+
+Install eth-ape (poetry add failes for some dependency conflict)
+```bash
+pip install eth-ape
+```
 ## Demo Project
 
 The demo project is found in the `project/` directory.
 Install the plugins by doing:
 
 ```bash
-ape plugins install
+ape plugins install .
 ```
 
 List your existing plugins by doing:
@@ -28,6 +49,24 @@ ape compile
 ```
 
 Try running the tests:
+
+## Deploy Contract
+
+Setup environment variable `WEB3_ALCHEMY_API_KEY`
+```bash
+export WEB3_ALCHEMY_API_KEY=<someKey>
+```
+
+generate test account
+```bash
+ape accounts test
+```
+
+Install token list
+```bash
+ape tokens install tokens.1inch.eth
+```
+
 
 ## Demo Plugin
 

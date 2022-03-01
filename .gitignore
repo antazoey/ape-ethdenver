@@ -28,6 +28,9 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+poetry.lock
+.envrc
+.direnv
 MANIFEST
 
 # PyInstaller
